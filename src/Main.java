@@ -1,5 +1,3 @@
-import java.util.Random;
-
 class Superhero {
     String name;
     int attackPower;
