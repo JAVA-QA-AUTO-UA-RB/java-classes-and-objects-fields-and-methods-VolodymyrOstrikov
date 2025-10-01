@@ -1,47 +1,52 @@
 public class SuperHero {
 
-        String name;
-        int attackPower;
-        int defensePower;
-        int health = 100;
+    String name;
+    int attackPower;
+    int defensePower;
+    int health = 100;
 
-        public SuperHero(String name, int attackPower, int defensePower) {
-            this.name = name;
-            this.attackPower = attackPower;
-            this.defensePower = defensePower;
+    public SuperHero(String name, int attackPower, int defensePower) {
+        this.name = name;
+        this.attackPower = attackPower;
+        this.defensePower = defensePower;
+    }
+
+    public void attack(SuperHero opponent) {
+
+        System.out.println(this.name + " attacks " + opponent.name + " with power " + this.attackPower + ".");
+        opponent.takeDamage(this.attackPower);
+
+    }
+
+    public void takeDamage(int incomingDamage) {
+
+        int actualDamage = incomingDamage - this.defensePower;
+        if (actualDamage < 0) {
+            actualDamage = 0;
         }
 
-        public void attack(SuperHero opponent) {
-            int damage = this.attackPower - opponent.defensePower;
-            if (damage < 0) damage = 0;
 
-            System.out.println(this.name + " attacks " + opponent.name + " and deals " + damage + " damage.");
-            opponent.takeDamage(damage);
-        }
+        this.health -= actualDamage;
+        if (this.health <= 0) {
+            this.health = 0;
+            System.out.println(this.name + " took " + actualDamage + " damage and Burned out at work!");
 
-        public void takeDamage(int damage) {
-            this.health -= damage;
+        } else {
+            System.out.println(this.name + " took " + actualDamage + " damage. Health remaining is: " + this.health + ".");
 
-            int inflictedDamage = damage - this.defensePower;
-            if (inflictedDamage > 0) {
-                this.health -= inflictedDamage;
-            }
-            /*if (this.health < 0) this.health = 0;
-            System.out.println(this.name + " health remaining: " + this.health + ".");*/
-
-            if (this.health == 0) {
-                System.out.println(this.name + " Burned out at work!");
-            }
-        }
-        public boolean isAlive() {
-            return this.health > 0;
-        }
-
-        public void showStats() {
-            System.out.println(name + " — Attack: " + attackPower + ", Defense: " + defensePower + ", Health: " + health);
-        }
-        public void restoreHealth() {
-            this.health = 100;
-            System.out.println(this.name + " is fully healed and ready for the next battle!");
         }
     }
+
+    public boolean isAlive() {
+        return this.health > 0;
+    }
+
+    public void showStats() {
+        System.out.println(name + " — Attack: " + attackPower + ", Defense: " + defensePower + ", Health: " + health);
+    }
+
+    public void restoreHealth() {
+        this.health = 100;
+        System.out.println(this.name + " is fully healed and ready for the next battle!");
+    }
+}

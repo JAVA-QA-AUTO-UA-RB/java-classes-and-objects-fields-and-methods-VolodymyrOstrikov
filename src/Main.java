@@ -12,12 +12,12 @@ public class Main {
 
         // Second battle: Winner vs POLTAVA PALII
         winner.restoreHealth();
-        SuperHero poltavaPaliy = new SuperHero("POLTAVA PALII", 35, 12); // fire-based hero
+        SuperHero poltavaPalii = new SuperHero("POLTAVA PALII", 35, 12); // fire-based hero
         System.out.println("\nNow POLTAVA PALII enters the arena!");
-        poltavaPaliy.showStats();
+        poltavaPalii.showStats();
         winner.showStats();
 
-        SuperHero finalWinner = BattleField.battle(winner, poltavaPaliy);
+        SuperHero finalWinner = BattleField.battle(winner, poltavaPalii);
 
         System.out.println("\nFINAL WINNER: " + finalWinner.name + "!");
     }
