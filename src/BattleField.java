@@ -5,7 +5,6 @@ public class BattleField {
             System.out.println("\nRound " + round + ":");
             hero1.attack(hero2);
             if (!hero2.isAlive()) break;
-
             hero2.attack(hero1);
             round++;
         }
